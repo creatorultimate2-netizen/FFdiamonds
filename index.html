@@ -1,561 +1,825 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width,
-      initial-scale=1.0,
-      maximum-scale=1.0,
-      user-scalable=no">
 
-<title>Garena Free Fire Team</title>
-
-<style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+    <meta charset="UTF-8">
 
-html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-}
+    <meta name="viewport"
+          content="width=device-width,
+                   initial-scale=1.0,
+                   maximum-scale=1.0,
+                   user-scalable=no">
 
-body{
-    background:#292929;
-    font-family:Arial,Helvetica,sans-serif;
-    color:white;
-}
+    <title>Garena Free Fire Team</title>
 
-/* MAIN MOBILE FRAME */
-.page{
-    width:100%;
-    height:100dvh;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-}
 
-/* HEADER */
-.header{
-    height:17%;
-    min-height:105px;
+    <style>
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+        /* =========================================
+           RESET
+        ========================================= */
 
-    background:linear-gradient(
-        180deg,
-        #73cceb,
-        #58b7d9
-    );
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-    box-shadow:0 3px 7px rgba(0,0,0,.55);
-}
 
-.header h1{
-    width:100%;
-    text-align:center;
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
 
-    font-size:clamp(27px,7vw,39px);
-    font-weight:800;
+            background: #2b2b2b;
 
-    white-space:nowrap;
+            color: #ffffff;
 
-    text-shadow:
-        0 3px 4px rgba(0,0,0,.45);
-}
+            overflow-x: hidden;
+        }
 
-/* CONTENT */
-.content{
-    width:100%;
-    height:83%;
 
-    padding:6vh 38px 20px;
+        body {
+            margin: 0;
+            padding: 0;
+        }
 
-    overflow:hidden;
-}
 
-/* WATCH TITLE */
-.watch-title{
-    text-align:center;
+        /* =========================================
+           HEADER
+        ========================================= */
 
-    font-size:clamp(28px,8vw,40px);
-    line-height:1;
+        .header {
 
-    font-weight:800;
+            width: 100%;
+            height: 82px;
 
-    white-space:nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    margin-bottom:5vh;
-}
+            background:
+                linear-gradient(
+                    #86d2ed,
+                    #65bfe0
+                );
 
-/* VIDEO */
-.video-box{
-    width:100%;
-    aspect-ratio:16 / 9;
+            box-shadow:
+                0 3px 8px rgba(0,0,0,.25);
+        }
 
-    border-radius:27px;
 
-    overflow:hidden;
-    background:#000;
+        .header h1 {
 
-    box-shadow:
-        0 9px 25px rgba(0,0,0,.55);
-}
+            margin: 0;
+            padding: 0;
 
-.video-box video{
-    display:block;
+            color: #ffffff;
 
-    width:100%;
-    height:100%;
+            font-size: 27px;
+            line-height: 1;
 
-    object-fit:cover;
-}
+            font-weight: 800;
 
-/* CARD */
-.card{
-    position:relative;
+            text-align: center;
 
-    width:100%;
+            text-shadow:
+                0 2px 4px rgba(0,0,0,.30);
+        }
 
-    margin-top:6vh;
 
-    padding:26px 38px 24px;
+        /* =========================================
+           MAIN
+        ========================================= */
 
-    background:#101010;
+        .main {
 
-    border-radius:34px;
+            width: 100%;
+            max-width: 680px;
 
-    box-shadow:
-        0 12px 28px rgba(0,0,0,.5);
+            margin: 0 auto;
+            padding: 0;
 
-    overflow:hidden;
-}
+            display: flex;
+            flex-direction: column;
 
-/* COLOURED BORDER */
-.card::before{
-    content:"";
+            align-items: stretch;
+        }
 
-    position:absolute;
-    inset:0;
 
-    padding:5px;
+        /* =========================================
+           WATCH FULL VIDEO
+        ========================================= */
 
-    border-radius:34px;
+        .watch-title {
 
-    background:
-        linear-gradient(
-            135deg,
-            #ff1700,
-            #ff7b00,
-            #f5ef00,
-            #00df5a,
-            #00c8ff,
-            #7000ff
-        );
+            width: 100%;
 
-    -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
+            margin: 0;
 
-    -webkit-mask-composite:xor;
-    mask-composite:exclude;
+            /*
+             सिर्फ ऊपर का layout spacing
+             */
 
-    pointer-events:none;
-}
+            padding:
+                34px 8px 18px;
 
-/* BADGES */
-.badges{
-    display:flex;
-    justify-content:center;
-    align-items:center;
+            color: #ffffff;
 
-    gap:13px;
+            font-size: 27px;
+            line-height: 1;
 
-    margin-bottom:14px;
-}
+            font-weight: 800;
 
-.badge{
-    padding:9px 21px;
+            letter-spacing: 1px;
 
-    border-radius:25px;
+            text-align: center;
+        }
 
-    font-size:17px;
-    font-weight:800;
-}
 
-.new{
-    background:#ff454c;
-}
+        /* =========================================
+           VIDEO
+        ========================================= */
 
-.premium{
-    background:#6c5be8;
-}
+        .video-box {
 
-/* PRODUCT ROW */
-.product{
-    display:flex;
-    align-items:center;
+            width: 100%;
 
-    gap:25px;
-}
+            margin: 0;
+            padding: 0;
 
-/* DIAMOND IMAGE */
-.product-image{
-    width:125px;
-    height:125px;
+            aspect-ratio: 16 / 9;
 
-    min-width:125px;
+            background: #000000;
 
-    object-fit:cover;
+            border-radius: 20px;
 
-    border-radius:23px;
+            overflow: hidden;
 
-    display:block;
-}
+            box-shadow:
+                0 8px 20px rgba(0,0,0,.45);
+        }
 
-/* PRODUCT TEXT */
-.product-info{
-    min-width:0;
-}
 
-.product-title{
-    font-size:36px;
+        .video-box video {
 
-    line-height:1;
+            display: block;
 
-    font-weight:500;
+            width: 100%;
+            height: 100%;
 
-    margin-bottom:12px;
+            margin: 0;
+            padding: 0;
 
-    white-space:nowrap;
-}
+            background: #000000;
 
-.description{
-    color:#aaa;
+            object-fit: contain;
+        }
 
-    font-size:21px;
 
-    line-height:1.35;
-}
+        /* =========================================
+           DIAMOND CARD
 
-.stars{
-    color:#ffd21b;
+           VIDEO और CARD के बीच सिर्फ 8px
+        ========================================= */
 
-    font-size:28px;
+        .diamond-card {
 
-    margin-top:10px;
+            width: 100%;
 
-    letter-spacing:2px;
-}
+            margin:
+                8px 0 0 0;
 
-/* GREEN BUTTON */
-.claim-button{
-    width:100%;
+            padding: 3px;
 
-    margin-top:34px;
+            flex: none;
 
-    padding:19px 8px;
+            border-radius: 22px;
 
-    border:0;
-    border-radius:55px;
+            background:
+                linear-gradient(
+                    45deg,
+                    #ff0000,
+                    #ff7300,
+                    #fffb00,
+                    #48ff00,
+                    #00ffd5,
+                    #002bff,
+                    #7a00ff,
+                    #ff00c8,
+                    #ff0000
+                );
 
-    background:
-        linear-gradient(
-            90deg,
-            #00f084,
-            #00d56e
-        );
+            background-size: 400% 400%;
 
-    color:white;
+            animation:
+                rgbAnimation 10s linear infinite;
 
-    font-size:27px;
-    font-weight:800;
+            box-shadow:
+                0 12px 28px rgba(0,0,0,.50);
+        }
 
-    cursor:pointer;
 
-    box-shadow:
-        0 8px 25px rgba(0,255,130,.25);
-}
+        /* =========================================
+           RGB ANIMATION
+        ========================================= */
 
-.claim-button:active{
-    transform:scale(.98);
-}
+        @keyframes rgbAnimation {
 
-/* SMALL UNOFFICIAL LABEL */
-.unofficial{
-    text-align:center;
+            0% {
+                background-position: 0% 50%;
+            }
 
-    color:#777;
+            50% {
+                background-position: 100% 50%;
+            }
 
-    font-size:9px;
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-    margin-top:7px;
-}
 
+        /* =========================================
+           CARD INNER
+        ========================================= */
 
-/* MOBILE */
-@media(max-width:430px){
+        .card-inner {
 
-    .header{
-        height:16%;
-        min-height:90px;
-    }
+            width: 100%;
 
-    .header h1{
-        font-size:29px;
-    }
+            margin: 0;
 
-    .content{
-        height:84%;
+            padding:
+                14px 13px;
 
-        padding:
-            5vh
-            38px
-            10px;
-    }
+            background: #111111;
 
-    .watch-title{
-        font-size:32px;
-        margin-bottom:4.5vh;
-    }
+            border-radius: 19px;
 
-    .video-box{
-        border-radius:24px;
-    }
+            display: flex;
 
-    .card{
-        margin-top:5vh;
+            flex-direction: column;
 
-        padding:
-            20px
-            20px
-            18px;
+            min-height: 0;
+        }
 
-        border-radius:30px;
-    }
 
-    .card::before{
-        border-radius:30px;
-    }
+        /* =========================================
+           BADGES
+        ========================================= */
 
-    .badges{
-        gap:10px;
-    }
+        .badges {
 
-    .badge{
-        font-size:14px;
-        padding:8px 17px;
-    }
+            width: 100%;
 
-    .product{
-        gap:17px;
-    }
+            margin:
+                0 0 8px 0;
 
-    .product-image{
-        width:105px;
-        height:105px;
-        min-width:105px;
-        border-radius:21px;
-    }
+            padding: 0;
 
-    .product-title{
-        font-size:28px;
-    }
+            display: flex;
 
-    .description{
-        font-size:16px;
-    }
+            align-items: center;
 
-    .stars{
-        font-size:22px;
-        margin-top:7px;
-    }
+            justify-content: center;
 
-    .claim-button{
-        margin-top:23px;
+            gap: 10px;
+        }
 
-        padding:15px 5px;
 
-        font-size:22px;
-    }
-}
+        .badge {
 
+            display: flex;
 
-/* SHORT MOBILE SCREENS */
-@media(max-height:700px){
+            align-items: center;
 
-    .header{
-        height:14%;
-        min-height:70px;
-    }
+            justify-content: center;
 
-    .content{
-        height:86%;
-        padding-top:3vh;
-    }
+            padding:
+                7px 15px;
 
-    .watch-title{
-        font-size:28px;
-        margin-bottom:2.5vh;
-    }
+            border-radius: 20px;
 
-    .video-box{
-        aspect-ratio:16 / 8.5;
-    }
+            color: #ffffff;
 
-    .card{
-        margin-top:3vh;
-        padding:15px 18px;
-    }
+            font-size: 13px;
+            line-height: 1;
 
-    .product-image{
-        width:82px;
-        height:82px;
-        min-width:82px;
-    }
+            font-weight: 800;
+        }
 
-    .product-title{
-        font-size:23px;
-    }
 
-    .description{
-        font-size:13px;
-    }
+        .new {
 
-    .stars{
-        font-size:18px;
-    }
+            background: #ff3b48;
+        }
 
-    .claim-button{
-        margin-top:15px;
-        padding:11px;
-        font-size:20px;
-    }
-}
 
-</style>
+        .premium {
+
+            background: #6955ee;
+        }
+
+
+        /* =========================================
+           PRODUCT
+        ========================================= */
+
+        .product {
+
+            width: 100%;
+
+            margin: 0;
+            padding: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+        }
+
+
+        /* =========================================
+           CLICKABLE PRODUCT IMAGE
+        ========================================= */
+
+        .product-link {
+
+            display: block;
+
+            width: 92px;
+            height: 92px;
+
+            min-width: 92px;
+
+            flex: 0 0 92px;
+
+            margin: 0;
+            padding: 0;
+
+            text-decoration: none;
+        }
+
+
+        .product-image {
+
+            display: block;
+
+            width: 100%;
+            height: 100%;
+
+            margin: 0;
+            padding: 0;
+
+            border-radius: 16px;
+
+            object-fit: cover;
+
+            background: #222222;
+        }
+
+
+        /* =========================================
+           PRODUCT INFORMATION
+        ========================================= */
+
+        .product-info {
+
+            min-width: 0;
+
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .product-title {
+
+            margin:
+                0 0 7px 0;
+
+            padding: 0;
+
+            color: #ffffff;
+
+            font-size: 24px;
+
+            line-height: 1.05;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+
+        .product-desc {
+
+            margin: 0;
+            padding: 0;
+
+            color: #aaaaaa;
+
+            font-size: 14px;
+
+            line-height: 1.4;
+        }
+
+
+        /* =========================================
+           STARS
+        ========================================= */
+
+        .stars {
+
+            margin:
+                5px 0 0 0;
+
+            padding: 0;
+
+            color: #ffd000;
+
+            font-size: 20px;
+
+            line-height: 1;
+
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================================
+           CLAIM FREE DIAMOND BUTTON
+        ========================================= */
+
+        .claim-btn {
+
+            width: 100%;
+
+            height: 64px;
+
+            margin:
+                12px 0 0 0;
+
+            padding: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00f084,
+                    #00d86f
+                );
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-size: 21px;
+
+            line-height: 1;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            box-shadow:
+                0 5px 18px
+                rgba(0,230,120,.45);
+
+            cursor: pointer;
+
+            transition:
+                transform .15s ease,
+                filter .15s ease;
+        }
+
+
+        .claim-btn:hover {
+
+            filter: brightness(1.05);
+        }
+
+
+        .claim-btn:active {
+
+            transform:
+                scale(.97);
+        }
+
+
+        /* =========================================
+           SMALL PHONES
+        ========================================= */
+
+        @media (max-width: 380px) {
+
+
+            .header {
+
+                height: 70px;
+            }
+
+
+            .header h1 {
+
+                font-size: 22px;
+            }
+
+
+            .watch-title {
+
+                margin: 0;
+
+                padding:
+                    22px 5px 12px;
+
+                font-size: 22px;
+            }
+
+
+            .video-box {
+
+                border-radius: 15px;
+            }
+
+
+            /* सिर्फ 8px gap */
+
+            .diamond-card {
+
+                margin:
+                    8px 0 0 0;
+
+                padding: 3px;
+
+                border-radius: 19px;
+            }
+
+
+            .card-inner {
+
+                padding:
+                    10px 11px;
+
+                border-radius: 16px;
+            }
+
+
+            .badges {
+
+                gap: 7px;
+
+                margin-bottom: 7px;
+            }
+
+
+            .badge {
+
+                padding:
+                    5px 12px;
+
+                font-size: 11px;
+            }
+
+
+            .product {
+
+                gap: 9px;
+            }
+
+
+            .product-link {
+
+                width: 72px;
+                height: 72px;
+
+                min-width: 72px;
+
+                flex-basis: 72px;
+            }
+
+
+            .product-image {
+
+                border-radius: 13px;
+            }
+
+
+            .product-title {
+
+                margin-bottom: 5px;
+
+                font-size: 20px;
+            }
+
+
+            .product-desc {
+
+                font-size: 11px;
+
+                line-height: 1.35;
+            }
+
+
+            .stars {
+
+                margin-top: 3px;
+
+                font-size: 17px;
+            }
+
+
+            .claim-btn {
+
+                height: 55px;
+
+                margin-top: 9px;
+
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<div class="page">
 
-    <!-- HEADER -->
+    <!-- ======================================
+         HEADER
+    ======================================= -->
+
     <header class="header">
-        <h1>Garena Free Fire Team</h1>
+
+        <h1>
+            Garena Free Fire Team
+        </h1>
+
     </header>
 
 
-    <main class="content">
 
-        <!-- TITLE -->
+    <!-- ======================================
+         MAIN
+    ======================================= -->
+
+    <main class="main">
+
+
+        <!-- WATCH FULL VIDEO -->
+
         <h2 class="watch-title">
             WATCH FULL VIDEO
         </h2>
 
 
-        <!-- VIDEO -->
+
+        <!-- ==================================
+             VIDEO
+        ================================== -->
+
         <section class="video-box">
 
             <video
                 controls
                 playsinline
-                preload="metadata">
+                preload="metadata"
+            >
 
                 <source
                     src="lv_0_20260901124625.mp4"
-                    type="video/mp4">
+                    type="video/mp4"
+                >
 
                 Your browser does not support
-                the video element.
+                the video tag.
 
             </video>
 
         </section>
 
 
-        <!-- DIAMOND CARD -->
-        <section class="card">
 
-            <div class="badges">
+        <!-- ==================================
+             FREE DIAMONDS
+             ONLY 8px FROM VIDEO
+        ================================== -->
 
-                <span class="badge new">
-                    NEW
-                </span>
-
-                <span class="badge premium">
-                    PREMIUM
-                </span>
-
-            </div>
+        <section class="diamond-card">
 
 
-            <div class="product">
+            <div class="card-inner">
 
-                <img
-                    class="product-image"
-                    src="garena-free-fire-diamonds-file-e63b6767.jpg.webp"
-                    alt="Free Fire Diamonds">
 
-                <div class="product-info">
+                <!-- BADGES -->
 
-                    <div class="product-title">
-                        FREE DIAMONDS
-                    </div>
+                <div class="badges">
 
-                    <div class="description">
-                        FREE FIRE UNLIMITED<br>
-                        DIAMONDS · INSTANT CLAIM
-                    </div>
+                    <span class="badge new">
+                        NEW
+                    </span>
 
-                    <div class="stars">
-                        ★★★★★
-                    </div>
+                    <span class="badge premium">
+                        PREMIUM
+                    </span>
 
                 </div>
 
+
+
+                <!-- PRODUCT -->
+
+                <div class="product">
+
+
+                    <!-- CLICKABLE PHOTO -->
+
+                    <a
+                        href="CLAIM_URL"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="product-link"
+                    >
+
+                        <img
+                            class="product-image"
+                            src="garena-free-fire-diamonds-file-e63b6767.jpg.webp"
+                            alt="Free Diamonds"
+                        >
+
+                    </a>
+
+
+
+                    <!-- PRODUCT INFO -->
+
+                    <div class="product-info">
+
+
+                        <div class="product-title">
+                            FREE DIAMONDS
+                        </div>
+
+
+                        <div class="product-desc">
+
+                            FREE FIRE UNLIMITED<br>
+
+                            DIAMONDS • INSTANT CLAIM
+
+                        </div>
+
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ==================================
+                     CLAIM BUTTON
+                ================================== -->
+
+                <a
+                    class="claim-btn"
+                    href="CLAIM_URL"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    CLAIM FREE DIAMOND
+
+                </a>
+
+
             </div>
 
-
-            <!-- BUTTON -->
-            <button
-                class="claim-button"
-                type="button"
-                onclick="openLink()">
-
-                GET FREE DIAMOND
-
-            </button>
-
-
-            <div class="unofficial">
-                Unofficial fan-made page
-            </div>
 
         </section>
 
+
     </main>
 
-</div>
-
-
-<script>
-function openLink(){
-
-    window.open(
-        "https://www.1024tera.com/wap/share/filelist?surl=49i0kz-yeLmF-1C4MmI00Q",
-        "_blank",
-        "noopener,noreferrer"
-    );
-
-}
-</script>
 
 </body>
+
 </html>
